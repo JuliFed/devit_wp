@@ -5,7 +5,7 @@ Description: Declares a plugin that will create a custom post type displaying fi
 Author: Fedorchenko Juli
 Author-email: fedorchenkojuli@gmail.com
 */
-
+    add_action( 'init', 'wptp_create_post_type' );
     function wptp_create_post_type() {
         $labels = array(
             'name' => __( 'Фильмы' ),
@@ -37,8 +37,8 @@ Author-email: fedorchenkojuli@gmail.com
         );
         register_post_type( 'films', $args );
     }
-    add_action( 'init', 'wptp_create_post_type' );
 
+    add_action( 'init', 'wptp_register_taxonomy' );
     function wptp_register_taxonomy() {
         register_taxonomy( 'films_genre', 'films',
             array(
@@ -125,7 +125,7 @@ Author-email: fedorchenkojuli@gmail.com
         );
 
     }
-    add_action( 'init', 'wptp_register_taxonomy' );
+
 
     add_action( 'admin_init', 'my_admin' );
     function my_admin() {
