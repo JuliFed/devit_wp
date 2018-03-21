@@ -39,6 +39,7 @@ Author-email: fedorchenkojuli@gmail.com
     }
 
     add_action( 'init', 'wptp_register_taxonomy' );
+
     function wptp_register_taxonomy() {
         register_taxonomy( 'films_genre', 'films',
             array(
@@ -126,7 +127,6 @@ Author-email: fedorchenkojuli@gmail.com
 
     }
 
-
     add_action( 'admin_init', 'my_admin' );
     function my_admin() {
         add_meta_box( 'film_meta_box',
@@ -169,17 +169,17 @@ Author-email: fedorchenkojuli@gmail.com
         }
     }
 
-
     add_filter( 'template_include', 'include_template_function', 1 );
     function include_template_function( $template_path ) {
         if ( get_post_type() == 'films' ) {
             if ( is_single() ) {
-                if ( $theme_file = locate_template( array ( 'single-films.php' ) ) ) {
+                /*if ( $theme_file = locate_template( array ( 'single-films.php' ) ) ) {
                     $template_path = $theme_file;
                 } else {
                     $template_path = plugin_dir_path( __FILE__ ) . '/single-films.php';
-                }
-            }else {
+                }*/
+            }
+            else {
                 if ( $theme_file = locate_template( array ( 'content-films.php' ) ) ) {
                     $template_path = $theme_file;
                 } else {
@@ -191,5 +191,5 @@ Author-email: fedorchenkojuli@gmail.com
         return $template_path;
     }
 
-
+   
 ?>
