@@ -155,6 +155,33 @@ Author-email: fedorchenkojuli@gmail.com
 <?php
     }
 
+    function true_taxonomy_filter() {
+        global $typenow; // тип поста
+        if( $typenow == 'films' ){ // для каких типов постов отображать
+            $taxes = array('films_country', 'films_years', 'films_genre', 'films_actors'); // таксономии через запятую
+            foreach ($taxes as $tax) {
+                $current_tax = isset( $_GET[$tax] ) ? $_GET[$tax] : '';
+                $tax_obj = get_taxonomy($tax);
+                $tax_name = mb_strtolower($tax_obj->labels->name);
+                // функция mb_strtolower переводит в нижний регистр
+                // она может не работать на некоторых хостингах, если что, убирайте её отсюда
+                $terms = get_terms($tax);
+                if(count($terms) > 0) {
+                    echo "<select name='$tax' id='$tax' class='postform'>";
+                    echo "<option value=''>Все $tax_name</option>";
+                    foreach ($terms as $term) {
+                        echo '<option value='. $term->slug, $current_tax == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; 
+                    }
+                    echo "</select>";
+                }
+            }
+        }
+    }
+     
+    add_action( 'restrict_manage_posts', 'true_taxonomy_filter' );
+
+
+
     add_action( 'save_post', 'add_film_fields', 10, 2 );
 
     function add_film_fields( $film_id, $film ) {
