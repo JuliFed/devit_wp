@@ -68,7 +68,7 @@
 		                'depth'             => 2,
 		                'container'         => 'div',
 		                'container_class'   => 'collapse navbar-collapse navbar-ex1-collapse',
-		                'menu_class'        => 'nav navbar-expand navbar-expand-lg ',
+		                'menu_class'        => 'nav navbar-nav navbar-expand-lg navbar-dark ',
 		                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
 		                'walker'            => new wp_bootstrap_navwalker())
 		            );

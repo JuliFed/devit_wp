@@ -12,14 +12,24 @@ get_header(); ?>
                 </div>
                 <div class="col-8">
                     <h2><strong><?php the_title(); ?></strong></h2>
-                    <p><strong>Cтоимость сеанса: </strong></p>
-                    <p><?php echo esc_html( get_post_meta( get_the_ID(), 'film_price', true ) ) . ' грн.'; ?></p>
-                    <p><strong>Дата выхода в прокат: </strong></p>
-                    <p><?php echo esc_html( get_post_meta( get_the_ID(), 'film_date', true ) ); ?></p>
-                    <p><strong>Жанр: </strong></p>
-                    <p><?php the_terms( $post->ID, 'films_genre' ,  ' ' );?></p>
-                    <p><strong>Страна: </strong></p>
-                    <p><?php the_terms( $post->ID, 'films_country' ,  ' ' );?></p>
+                    <table class="table-responsive detail-film">
+                        <tr>
+                            <td><strong>Cтоимость сеанса: </strong></td>
+                            <td><?php echo esc_html( get_post_meta( get_the_ID(), 'film_price', true ) ) . ' грн.'; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Дата выхода: </strong></td>
+                            <td><?php echo esc_html( get_post_meta( get_the_ID(), 'film_date', true ) ); ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Жанр: </strong></td>
+                            <td><?php the_terms( $post->ID, 'films_genre' ,  ' ' );?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Страна: </strong></td>
+                            <td><?php the_terms( $post->ID, 'films_country' ,  ' ' );?></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
