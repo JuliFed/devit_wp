@@ -33,7 +33,7 @@ Author-email: fedorchenkojuli@gmail.com
                 'thumbnail'
                 ),
             'taxonomies' => array('films_genre','films_country','films_years','films_actors'), 
-            'exclude_from_search' => false
+            'exclude_from_search' => true
         );
         register_post_type( 'films', $args );
     }

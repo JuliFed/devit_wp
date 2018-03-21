@@ -14,14 +14,6 @@ get_header(); ?>
                     <h2><strong><?php the_title(); ?></strong></h2>
                     <table class="table-responsive detail-film">
                         <tr>
-                            <td><strong>Cтоимость сеанса: </strong></td>
-                            <td><?php echo esc_html( get_post_meta( get_the_ID(), 'film_price', true ) ) . ' грн.'; ?></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Дата выхода: </strong></td>
-                            <td><?php echo esc_html( get_post_meta( get_the_ID(), 'film_date', true ) ); ?></td>
-                        </tr>
-                        <tr>
                             <td><strong>Жанр: </strong></td>
                             <td><?php the_terms( $post->ID, 'films_genre' ,  ' ' );?></td>
                         </tr>
@@ -29,6 +21,30 @@ get_header(); ?>
                             <td><strong>Страна: </strong></td>
                             <td><?php the_terms( $post->ID, 'films_country' ,  ' ' );?></td>
                         </tr>
+                        <tr>
+                            <td><strong>Год: </strong></td>
+                            <td><?php the_terms( $post->ID, 'films_years' ,  ' ' );?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Актеры: </strong></td>
+                            <td><?php the_terms( $post->ID, 'films_actors' ,  ' ' );?></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/img/vallet.png" width="24"/>
+                                <?php echo esc_html( get_post_meta( get_the_ID(), 'film_price', true ) ) . ' грн.'; ?>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            
+                            <td>
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/img/calendar.png" width="24"/>
+                                <?php echo esc_html( get_post_meta( get_the_ID(), 'film_date', true ) ); ?>
+                            </td>
+                            <td></td>
+                        </tr>
+                        
                     </table>
                 </div>
             </div>

@@ -28,11 +28,13 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php the_title(); ?></strong></h5>
                             <p class="card-text">
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/img/vallet.png" width="24"/>
                                 <strong>Cтоимость сеанса: </strong>
                                 <?php echo esc_html( get_post_meta( get_the_ID(), 'film_price', true ) ); ?>
-                                <br />
-                            
-                                <strong>Дата выхода в прокат: </strong>
+                            </p>
+                            <p class="card-text">
+                                <img src="<?php echo get_stylesheet_directory_uri() ?>/img/calendar.png" width="24"/>
+                                <strong>Дата выхода: </strong>
                                 <?php echo esc_html( get_post_meta( get_the_ID(), 'film_date', true ) ); ?>
                             </p>
                             <a href="<?php the_permalink(); ?>" class="btn btn-primary">Подробнее</a>

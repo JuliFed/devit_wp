@@ -19,7 +19,7 @@ get_header(); ?>
 			$args = array(
 				'post_type'   => 'films'
 			);
-			$posts = query_posts( $args );
+			//$posts = query_posts( $args );
 		?>
 		<?php if ( have_posts() ) : ?>
 

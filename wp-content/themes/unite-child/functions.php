@@ -23,7 +23,7 @@ function last_five_films( $atts ){
                             </td>
                             <td>
                                 <small>
-                                    <strong>Дата выхода: </strong>
+                                    <img src="<?php echo get_stylesheet_directory_uri() ?>/img/calendar.png" width="24"/>
                                     <?php echo esc_html( get_post_meta( get_the_ID(), 'film_date', true ) ); ?>                        
                                 </small>
                             </td>                            
@@ -37,7 +37,7 @@ function last_five_films( $atts ){
                             </td>
                             <td>
                                 <small>
-                                    <strong>Cтоимость сеанса: </strong>
+                                    <img src="<?php echo get_stylesheet_directory_uri() ?>/img/vallet.png" width="24"/>
                                     <?php echo esc_html( get_post_meta( get_the_ID(), 'film_price', true ) ) . ' грн.'; ?>
                                 </small>
                             </td>
@@ -58,4 +58,12 @@ function last_five_films( $atts ){
  
 add_shortcode( 'last5films', 'last_five_films' );
 
+function tr_pre_redefining_query($query) {
+	if ($query->is_category) { 
+		$query->set('post_type', array('films'));
+	}
+	return $query;
+}
+ 
+add_filter('pre_get_posts', 'tr_pre_redefining_query');
 ?>
